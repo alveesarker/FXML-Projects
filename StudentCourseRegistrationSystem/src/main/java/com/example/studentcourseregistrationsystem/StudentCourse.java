@@ -5,12 +5,12 @@ public class StudentCourse {
     private String name;
     private String courseName;
     private int creditHour;
-    private boolean enrollmentStatus;
+    private String enrollmentStatus;
 
     public StudentCourse() {
     }
 
-    public StudentCourse(String id, String name, String courseName, int creditHour, boolean enrollmentStatus) {
+    public StudentCourse(String id, String name, String courseName, int creditHour, String enrollmentStatus) {
         this.id = id;
         this.name = name;
         this.courseName = courseName;
@@ -34,7 +34,7 @@ public class StudentCourse {
         return creditHour;
     }
 
-    public boolean isEnrollmentStatus() {
+    public String isEnrollmentStatus() {
         return enrollmentStatus;
     }
 
@@ -54,7 +54,7 @@ public class StudentCourse {
         this.creditHour = creditHour;
     }
 
-    public void setEnrollmentStatus(boolean enrollmentStatus) {
+    public void setEnrollmentStatus(String enrollmentStatus) {
         this.enrollmentStatus = enrollmentStatus;
     }
 
