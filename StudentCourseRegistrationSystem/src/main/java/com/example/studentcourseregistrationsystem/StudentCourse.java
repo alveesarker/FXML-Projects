@@ -10,6 +10,10 @@ public class StudentCourse {
     public StudentCourse() {
     }
 
+    public String getEnrollmentStatus() {
+        return enrollmentStatus;
+    }
+
     public StudentCourse(String id, String name, String courseName, int creditHour, String enrollmentStatus) {
         this.id = id;
         this.name = name;

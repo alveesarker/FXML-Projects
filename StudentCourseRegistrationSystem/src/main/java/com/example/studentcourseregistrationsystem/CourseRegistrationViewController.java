@@ -114,5 +114,12 @@ public class CourseRegistrationViewController {
 
     @javafx.fxml.FXML
     public void handleTotalRegisterOnAction(ActionEvent actionEvent) {
+        int count = 0;
+        for (StudentCourse sc: studentCourseList){
+            if (sc.getEnrollmentStatus().equals("Yes")){
+                count += 1;
+            }
+        }
+        showMessage.setText("Enrollment Count: " + count);
     }
 }
