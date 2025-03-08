@@ -51,6 +51,12 @@ public class CourseRegistrationViewController {
 
     @javafx.fxml.FXML
     public void handleSearchOnAction(ActionEvent actionEvent) {
+        registerTableView.getItems().clear();
+        for (StudentCourse sc : studentCourseList) {
+            if (filteredCourseNameComboBox.getValue().equals(sc.getCourseName())) {
+                registerTableView.getItems().add(sc);
+            }
+        }
     }
 
     @javafx.fxml.FXML
