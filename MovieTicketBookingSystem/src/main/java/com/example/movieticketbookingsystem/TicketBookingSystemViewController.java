@@ -47,19 +47,19 @@ public class TicketBookingSystemViewController {
 
     @javafx.fxml.FXML
     public void handleAddButtonOnAction(ActionEvent actionEvent) {
-        if (movieNameTextField.getText().isEmpty()){
+        if (movieNameTextField.getText().isEmpty()) {
             showMessage("Enter move name.");
             return;
         }
 
-        for (Movie m: movieList){
-            if (movieNameTextField.getText().equals(m.getMovieName())){
+        for (Movie m : movieList) {
+            if (movieNameTextField.getText().equals(m.getMovieName())) {
                 showMessage("Duplicate Move name.");
                 return;
             }
         }
 
-        if (genreComboBox.getValue() == null){
+        if (genreComboBox.getValue() == null) {
             showMessage("Enter genre.");
             return;
         }
@@ -67,12 +67,12 @@ public class TicketBookingSystemViewController {
             showMessage("Enter show date.");
             return;
         }
-        if (totalSeatTextField.getText().isEmpty()){
+        if (totalSeatTextField.getText().isEmpty()) {
             showMessage("Enter total seat number.");
             return;
         }
         try {
-            if (Integer.parseInt(totalSeatTextField.getText()) < 0){
+            if (Integer.parseInt(totalSeatTextField.getText()) < 0) {
                 showMessage("Seat number must be positive.");
                 return;
             }
@@ -88,14 +88,15 @@ public class TicketBookingSystemViewController {
             avlSeat = "No";
         }
 //        String movieName, String genre, LocalDate showDate, String seatAvailability, int totalSeats
-        Movie m = new Movie(
-                movieNameTextField.getText(),
-                genreComboBox.getValue(),
-                showDatePicker.getValue(),
-                avlSeat,
-                Integer.parseInt(totalSeatTextField.getText())
+        movieList.add(
+                new Movie(
+                        movieNameTextField.getText(),
+                        genreComboBox.getValue(),
+                        showDatePicker.getValue(),
+                        avlSeat,
+                        Integer.parseInt(totalSeatTextField.getText())
+                )
         );
-        movieList.add(m);
         movieTableView.getItems().clear();
         movieTableView.getItems().addAll(movieList);
     }
@@ -103,8 +104,8 @@ public class TicketBookingSystemViewController {
     @javafx.fxml.FXML
     public void handleEnterGenreButtonOnAction(ActionEvent actionEvent) {
         movieTableView.getItems().clear();
-        for(Movie m: movieList){
-            if (filteredGenreComboBox.getValue().equals(m.getGenre())){
+        for (Movie m : movieList) {
+            if (filteredGenreComboBox.getValue().equals(m.getGenre())) {
                 movieTableView.getItems().add(m);
             }
         }
@@ -113,14 +114,14 @@ public class TicketBookingSystemViewController {
     @javafx.fxml.FXML
     public void handleFindMovieButtonOnAction(ActionEvent actionEvent) {
         movieTableView.getItems().clear();
-        for(Movie m: movieList){
-            if (m.getSeatAvailability().equals("Yes")){
+        for (Movie m : movieList) {
+            if (m.getSeatAvailability().equals("Yes")) {
                 movieTableView.getItems().add(m);
             }
         }
     }
 
-    public void showMessage(String msg){
+    public void showMessage(String msg) {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(msg);
         a.showAndWait();
