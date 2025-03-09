@@ -46,10 +46,37 @@ public class RentalManagementViewController {
 
     @javafx.fxml.FXML
     public void handleAddButtonOnAction() {
+        if (idTextField.getText().isEmpty()){
+            showAlert("Enter rental id.");
+            return;
+        }
+
+        if (nameidTextField.getText().isEmpty()){
+            showAlert("Enter Customer Name.");
+            return;
+        }
+
+        if (vehicleTypeComboBox.getValue() == null){
+            showAlert("Enter vehicle Type.");
+            return;
+        }
+
+        if (durationidTextField.getText().isEmpty()){
+            showAlert("Enter rental duration.");
+            return;
+        }
+
 //      String rentalId, String customerName, String vehicleType, int rentalDuration
         if (!isValidRentalID(idTextField.getText())) {
             showAlert("Invalid id!");
             return;
+        }
+
+        for (Rental r: rentalList){
+            if (idTextField.getText().equals(r.getRentalId())){
+                showAlert("Duplicate rental Id!");
+                return;
+            }
         }
 
         if (1 > Integer.parseInt(durationidTextField.getText()) || Integer.parseInt(durationidTextField.getText()) > 30) {
