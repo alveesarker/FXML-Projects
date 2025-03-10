@@ -21,8 +21,8 @@ public class Participant {
         this.studentStatus = null;
     }
 
-    public Participant(String participantID, String fullName, String emailAddress, String phoneNumber, String eventType, LocalDate registrationDate, String studentStatus) {
-        this.participantId = participantID;
+    public Participant(String participantId, String fullName, String emailAddress, String phoneNumber, String eventType, LocalDate registrationDate, String studentStatus) {
+        this.participantId = participantId;
         this.fullName = fullName;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
@@ -31,7 +31,7 @@ public class Participant {
         this.studentStatus = studentStatus;
     }
 
-    public String getParticipantID() {
+    public String getParticipantId() {
         return participantId;
     }
 
@@ -59,8 +59,8 @@ public class Participant {
         return studentStatus;
     }
 
-    public void setParticipantID(String participantID) {
-        participantId = participantID;
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
     }
 
     public void setFullName(String fullName) {

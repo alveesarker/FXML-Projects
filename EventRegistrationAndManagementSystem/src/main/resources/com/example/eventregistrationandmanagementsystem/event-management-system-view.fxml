@@ -39,6 +39,6 @@
       <ComboBox fx:id="filteredEventTypeComboBox" layoutX="361.0" layoutY="51.0" prefHeight="26.0" prefWidth="186.0" promptText="Event Type" />
       <Button layoutX="361.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleSearchButtonOnClick" text="Search Button" />
       <Button layoutX="362.0" layoutY="166.0" mnemonicParsing="false" onAction="#handleShowTotalRegButtonOnClick" text="Show Total Students Registered" />
-      <Text fx:id="showTotalRegNumText" layoutX="361.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="186.39999999999986" />
+      <Text fx:id="showTotalRegNumText" layoutX="361.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="186.39999999999986" />
    </children>
 </AnchorPane>
