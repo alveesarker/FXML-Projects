@@ -11,7 +11,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="675.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eventregistrationandmanagementsystem.EventManagementSystemViewController">
    <children>
       <TextField fx:id="idTextField" layoutX="141.0" layoutY="64.0" />
@@ -37,8 +36,9 @@
       </TableView>
       <Line endX="-72.79998779296875" endY="197.39999389648438" layoutX="420.0" layoutY="153.0" startX="-72.79998779296875" startY="-113.0" />
       <ComboBox fx:id="filteredEventTypeComboBox" layoutX="361.0" layoutY="51.0" prefHeight="26.0" prefWidth="186.0" promptText="Event Type" />
-      <Button layoutX="361.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleSearchButtonOnClick" text="Search Button" />
-      <Button layoutX="362.0" layoutY="166.0" mnemonicParsing="false" onAction="#handleShowTotalRegButtonOnClick" text="Show Total Students Registered" />
-      <Text fx:id="showTotalRegNumText" layoutX="361.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="186.39999999999986" />
+      <Button layoutX="456.0" layoutY="128.0" mnemonicParsing="false" onAction="#handleSearchButtonOnClick" text="Search Button" />
+      <Button layoutX="362.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleShowTotalRegButtonOnClick" text="Show Total Students Registered" />
+      <Text fx:id="showTotalRegNumText" layoutX="363.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="186.39999999999986" />
+      <CheckBox fx:id="filteredStudentStatusCheckBox" layoutX="361.0" layoutY="95.0" mnemonicParsing="false" text="Student Status " />
    </children>
 </AnchorPane>

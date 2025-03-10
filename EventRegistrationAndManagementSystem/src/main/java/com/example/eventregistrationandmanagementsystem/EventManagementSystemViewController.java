@@ -42,6 +42,8 @@ public class EventManagementSystemViewController {
     private ComboBox<String> filteredEventTypeComboBox;
 
     private final List<Participant> participantList = new ArrayList<>();
+    @javafx.fxml.FXML
+    private CheckBox filteredStudentStatusCheckBox;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -89,9 +91,16 @@ public class EventManagementSystemViewController {
 
     @javafx.fxml.FXML
     public void handleSearchButtonOnClick(ActionEvent actionEvent) {
+
+        String studStatus = "";
+        if (filteredStudentStatusCheckBox.isSelected()) {
+            studStatus = "Yes";
+        } else {
+            studStatus = "No";
+        }
         participantTableView.getItems().clear();
-        for (Participant p: participantList){
-            if (filteredEventTypeComboBox.getValue().equals(p.getEventType())){
+        for (Participant p : participantList) {
+            if (filteredEventTypeComboBox.getValue().equals(p.getEventType()) && studStatus.equals(p.getStudentStatus())) {
                 participantTableView.getItems().add(p);
             }
         }
