@@ -62,66 +62,7 @@ public class EventManagementSystemViewController {
 //        String participantID, String fullName, String emailAddress, String phoneNumber,
 //        String eventType, LocalDate registrationDate, String studentStatus
 
-        try {
-            int inNumber = Integer.parseInt(idTextField.getText());
-        } catch (NumberFormatException e) {
-            showTotalRegNumText.setText("Invalid id number!");
-            return;
-        }
 
-        if (idTextField.getText().length() != 8) {
-            showTotalRegNumText.setText("Id length must be 8!");
-            return;
-        }
-
-        for (Participant p: participantList) {
-            if (idTextField.getText().equals(p.getParticipantId())){
-                showTotalRegNumText.setText("Duplicate participant ID.");
-                return;
-            }
-        }
-
-        if (nameTextField.getText().isEmpty()) {
-            showTotalRegNumText.setText("Enter name.");
-            return;
-        }
-
-        if (emailTextField.getText().isEmpty()) {
-            showTotalRegNumText.setText("Enter email.");
-            return;
-        }
-
-        if (phoneNumberTextField.getText().isEmpty()){
-            showTotalRegNumText.setText("Enter phone number.");
-            return;
-        }
-
-        try{
-            int phoneNumber = Integer.parseInt(phoneNumberTextField.getText());
-        } catch (NumberFormatException e) {
-            showTotalRegNumText.setText("invalid phone number!");
-            return;
-        }
-
-        if (!phoneNumberTextField.getText().startsWith("01")){
-            showTotalRegNumText.setText("Phone number must start with 01!");
-            return;
-        }
-
-        if (phoneNumberTextField.getText().length() != 11){
-            showTotalRegNumText.setText("Phone number must be of 11 digit!");
-            return;
-        }
-
-        if (eventTypeComboBox.getValue() == null) {
-            showTotalRegNumText.setText("Enter event type.");
-            return;
-        }
-
-        if(registrationDatePicker.getValue()== null){
-            showTotalRegNumText.setText("Enter registration date.");
-            return;
-        }
 
         String studStatus = "";
         if (studentStatusCheckBox.isSelected()) {
