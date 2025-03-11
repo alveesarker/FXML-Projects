@@ -83,10 +83,33 @@ public class EventManagementSystemViewController {
 
         if (nameTextField.getText().isEmpty()) {
             showTotalRegNumText.setText("Enter name.");
+            return;
         }
 
         if (emailTextField.getText().isEmpty()) {
             showTotalRegNumText.setText("Enter email.");
+            return;
+        }
+
+        if (phoneNumberTextField.getText().isEmpty()){
+            showTotalRegNumText.setText("Enter phone number.");
+            return;
+        }
+
+        try{
+            int phoneNumber = Integer.parseInt(phoneNumberTextField.getText());
+        } catch (NumberFormatException e) {
+            showTotalRegNumText.setText("invalid phone number!");
+            return;
+        }
+
+        if (!phoneNumberTextField.getText().startsWith("01")){
+            showTotalRegNumText.setText("Phone number must start with 01!");
+            return;
+        }
+
+        if (phoneNumberTextField.getText().length() != 11){
+            showTotalRegNumText.setText("Phone number must be of 11 digit!");
             return;
         }
 
