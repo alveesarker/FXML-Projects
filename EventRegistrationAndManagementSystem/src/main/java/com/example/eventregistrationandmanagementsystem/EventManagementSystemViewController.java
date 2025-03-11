@@ -149,6 +149,7 @@ public class EventManagementSystemViewController {
 
     @javafx.fxml.FXML
     public void handleShowTotalRegButtonOnClick(ActionEvent actionEvent) {
+        showTotalRegNumText.setText("Total register: " + participantList.size());
     }
 
     @javafx.fxml.FXML
