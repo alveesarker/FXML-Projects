@@ -62,6 +62,44 @@ public class EventManagementSystemViewController {
 //        String participantID, String fullName, String emailAddress, String phoneNumber,
 //        String eventType, LocalDate registrationDate, String studentStatus
 
+        try {
+            int inNumber = Integer.parseInt(idTextField.getText());
+        } catch (NumberFormatException e) {
+            showTotalRegNumText.setText("Invalid id number!");
+            return;
+        }
+
+        if (idTextField.getText().length() != 8) {
+            showTotalRegNumText.setText("Id length must be 8!");
+            return;
+        }
+
+        for (Participant p: participantList) {
+            if (idTextField.getText().equals(p.getParticipantId())){
+                showTotalRegNumText.setText("Duplicate participant ID.");
+                return;
+            }
+        }
+
+        if (nameTextField.getText().isEmpty()) {
+            showTotalRegNumText.setText("Enter name.");
+        }
+
+        if (emailTextField.getText().isEmpty()) {
+            showTotalRegNumText.setText("Enter email.");
+            return;
+        }
+
+        if (eventTypeComboBox.getValue() == null) {
+            showTotalRegNumText.setText("Enter event type.");
+            return;
+        }
+
+        if(registrationDatePicker.getValue()== null){
+            showTotalRegNumText.setText("Enter registration date.");
+            return;
+        }
+
         String studStatus = "";
         if (studentStatusCheckBox.isSelected()) {
             studStatus = "Yes";
@@ -83,6 +121,7 @@ public class EventManagementSystemViewController {
 
         participantTableView.getItems().clear();
         participantTableView.getItems().addAll(participantList);
+        showTotalRegNumText.setText("Participant added successfully.");
     }
 
     @javafx.fxml.FXML
