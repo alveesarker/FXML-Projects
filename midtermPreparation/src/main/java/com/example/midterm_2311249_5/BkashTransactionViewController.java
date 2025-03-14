@@ -1,4 +1,5 @@
 package com.example.midterm_2311249_5;
+import java.io.*;
 
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -53,13 +54,22 @@ public class BkashTransactionViewController {
         receiverTypeCol.setCellValueFactory(new PropertyValueFactory<>("receiverType"));
         senderNoCol.setCellValueFactory(new PropertyValueFactory<>("senderNo"));
         transChargeCol.setCellValueFactory(new PropertyValueFactory<>("transactionCharge"));
+
+        // Load transactions from file
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("transactions.dat"))) {
+            List<BKashTransaction> loadedTransactions = (List<BKashTransaction>) ois.readObject();
+            if (loadedTransactions != null) {
+                transactionList.addAll(loadedTransactions); // Store in memory
+                bkashTransTableView.getItems().addAll(transactionList); // Show in TableView
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("No previous transactions found.");
+        }
     }
+
 
     @javafx.fxml.FXML
     public void handleAddButton() {
-//        int senderNo, int receiverNo, String receiverType,
-//        String transactionId, float amount, String transactionType, LocalDate dateOfTransaction
-
         if (transactionTypeComboBox.getValue().equals("TopUp")) {
             if (receiverTypeComboBox.getValue().equals("Agent") || receiverTypeComboBox.getValue().equals("Merchant")) {
                 showProcessMsgLable.setText("Select receiver type to Personal for top up transaction");
@@ -84,12 +94,19 @@ public class BkashTransactionViewController {
             }
         }
 
-        transactionList.add(
-                trans
-        );
+        transactionList.add(trans); // Store in memory
+        bkashTransTableView.getItems().add(trans); // Show in UI
+
+        // Save updated list to file
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("transactions.dat"))) {
+            oos.writeObject(transactionList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         showProcessMsgLable.setText("Bkash transaction added successfully.");
-//        bkashTransTableView.getItems().addAll(transactionList);
     }
+
 
     @javafx.fxml.FXML
     public void handleAverageButton() {

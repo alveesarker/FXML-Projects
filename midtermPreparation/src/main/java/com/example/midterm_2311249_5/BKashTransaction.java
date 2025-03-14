@@ -1,8 +1,8 @@
 package com.example.midterm_2311249_5;
-
+import java.io.*;
 import java.time.LocalDate;
 
-public class BKashTransaction {
+public class BKashTransaction implements Serializable {
     private int senderNo;
     private int receiverNo;
     private String receiverType;
