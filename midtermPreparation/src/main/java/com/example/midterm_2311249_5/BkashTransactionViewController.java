@@ -79,7 +79,8 @@ public class BkashTransactionViewController {
 
         if (transactionTypeComboBox.getValue().equals("SendMoney") || transactionTypeComboBox.getValue().equals("PayBill")) {
             if (trans.getTransactionCharge() <= 0) {
-                showProcessMsgLable.setText("For Send Money and Pay Bill transaction Type Transaction Amount must be greater than zero.");
+                showProcessMsgLable.setText("For Send Money and Pay Bill transaction Type Transaction Charge must be greater than zero.");
+                return;
             }
         }
 
