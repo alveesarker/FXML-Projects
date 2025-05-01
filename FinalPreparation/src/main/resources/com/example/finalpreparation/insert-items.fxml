@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalpreparation.InsertItemsController">
+   <children>
+      <ComboBox fx:id="floorComboBox" layoutX="477.0" layoutY="160.0" prefWidth="150.0" promptText="Floor" />
+      <TextField fx:id="idTextField" layoutX="236.0" layoutY="160.0" />
+      <Text layoutX="211.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id:" />
+      <TextField fx:id="nameTextField" layoutX="236.0" layoutY="204.0" />
+      <Text layoutX="194.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
+      <TextField fx:id="ageTextField" layoutX="236.0" layoutY="246.0" />
+      <Text layoutX="205.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" />
+      <ComboBox fx:id="roomComboBox" layoutX="477.0" layoutY="204.0" prefWidth="150.0" promptText="Room" />
+      <RadioButton fx:id="maleRadio" layoutX="261.0" layoutY="312.0" mnemonicParsing="false" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="gender" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="femaleRadio" layoutX="319.0" layoutY="312.0" mnemonicParsing="false" text="Female" toggleGroup="$gender" />
+      <Text layoutX="205.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" />
+      <Button layoutX="494.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleAddButton" text="ADD" />
+      <Button layoutX="667.0" layoutY="414.0" mnemonicParsing="false" onAction="#handleNextButton" text="next" />
+   </children>
+</AnchorPane>
