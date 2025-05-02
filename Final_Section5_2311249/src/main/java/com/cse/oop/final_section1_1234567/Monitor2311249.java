@@ -7,12 +7,14 @@ public class Monitor2311249 implements Serializable {
     private String resolution;
     private String diagonal;
     private float price;
+    private int ppi;
 
     public Monitor2311249(String model, String resolution, String diagonal, float price) {
         this.model = model;
         this.resolution = resolution;
         this.diagonal = diagonal;
         this.price = price;
+        this.ppi = getPPI(resolution, diagonal);
     }
 
     public Monitor2311249() {
@@ -50,6 +52,13 @@ public class Monitor2311249 implements Serializable {
         this.price = price;
     }
 
+    public int getPpi() {
+        return ppi;
+    }
+
+    public void setPpi(int ppi) {
+        this.ppi = ppi;
+    }
 
     @Override
     public String toString() {
@@ -58,10 +67,23 @@ public class Monitor2311249 implements Serializable {
                 ", resolution='" + resolution + '\'' +
                 ", diagonal='" + diagonal + '\'' +
                 ", price=" + price +
+                ", ppi=" + ppi +
                 '}';
     }
 
-    public static int getPPI(String resolution, int diagonal) {
+    public static int getPPI(String resolution, String strDiagonal) {
+        int diagonal = 0;
+
+        if (strDiagonal.equals("17 inches")){
+            diagonal = 17;
+        } else if (strDiagonal.equals("19 inches")) {
+            diagonal = 19;
+        } else if (strDiagonal.equals("22 inches")) {
+            diagonal = 22;
+        } else if (strDiagonal.equals("24 inches")) {
+            diagonal = 24;
+        }
+
         switch (resolution) {
             case "HD" -> {
                 if (diagonal == 17) return 86;

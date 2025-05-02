@@ -1,12 +1,18 @@
 package com.cse.oop.final_section1_1234567;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -38,7 +44,7 @@ public class Scene1DataGenerationController {
     @javafx.fxml.FXML
     public void initialize() {
         diagonalComboBox.getItems().addAll("17 inches", "19 inches", "22 inches", "24 inches");
-        resolutionComboBox.getItems().addAll("HD", "HD+", "FULL-HD", "QHD");
+        resolutionComboBox.getItems().addAll("HD", "HD+", "Full-HD", "QHD");
 
         diagonalCol.setCellValueFactory(new PropertyValueFactory<>("diagonal"));
         modelCol.setCellValueFactory(new PropertyValueFactory<>("model"));
@@ -69,10 +75,39 @@ public class Scene1DataGenerationController {
 
     @javafx.fxml.FXML
     public void handleNextButton(ActionEvent actionEvent) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scene2-data-processing.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+        } catch (Exception e) {
+//            d
+        }
     }
 
     @javafx.fxml.FXML
     public void handleAddMonitorButton(ActionEvent actionEvent) {
+        if (modelTextField.getText().isEmpty()){
+            errorMessageText.setText("Enter Model!");
+            return;
+        }
+
+        if (resolutionComboBox.getValue() == null){
+            errorMessageText.setText("Select a resolution!");
+            return;
+        }
+
+        if (diagonalComboBox.getValue() == null){
+            errorMessageText.setText("Select a diagonal!");
+            return;
+        }
+
+        if (priceTextField.getText().isEmpty()){
+            errorMessageText.setText("Enter Price!");
+            return;
+        }
+
         Monitor2311249 m = new Monitor2311249(
                 modelTextField.getText(),
                 resolutionComboBox.getValue(),
