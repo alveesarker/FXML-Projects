@@ -1,10 +1,11 @@
 package com.example.final_section5_2311249_new;
 
+import java.io.Serializable;
 import java.security.PrivateKey;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class JobApplication {
+public class JobApplication implements Serializable {
     private int applicationNo;
     private String name;
     private String designationAppliedFor;
